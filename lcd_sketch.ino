@@ -1,11 +1,13 @@
 #include <LiquidCrystal.h>
 
-const int rs = 2, 
-          en = 3, 
-          d4 = 6, 
-          d5 = 7, 
-          d6 = 8, 
-          d7 = 9;
+// PINS FOR ESP32
+
+const int rs = 32, 
+          en = 33, 
+          d4 = 14, 
+          d5 = 27, 
+          d6 = 26, 
+          d7 = 25;
 
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
@@ -109,8 +111,8 @@ byte frowny6[8] = {
 0b00000
 };
 
-const int yesPin = 10;
-const int noPin = 11;
+const int yesPin = 5;
+const int noPin = 4;
 
 void setup() {
   pinMode(yesPin, INPUT_PULLUP);
@@ -120,6 +122,7 @@ void setup() {
     ;
   }
   // display image of smiley guy
+  delay(1000);
   lcd.begin(16, 2);
   lcd.setCursor(4, 0);
   lcd.print("Is he tuff?");
@@ -206,24 +209,4 @@ void drawFace(int col) {
   lcd.write((byte)3); 
   lcd.write((byte)4); 
   lcd.write((byte)5);
-}
-
-String parseInput() {
-  static String input = "";  // persistent buffer across calls
-
-  while (Serial.available()) {
-    char c = Serial.read();
-
-    if (c == '\n' || c == '\r') {   // newline marks end of command
-      if (input.length() > 0) {
-        String result = input;
-        input = "";                 // clear buffer for next input
-        return result;
-      }
-    } else {
-      input += c;                   // accumulate characters
-    }
-  }
-
-  return "";  // return empty if line not complete yet
 }
