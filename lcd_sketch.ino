@@ -368,13 +368,11 @@ void playGame() {
         break;  // esc
       }
     }
-    if (score > 100) {
-      GAME_TICK = 500;
-    } else if (score > 400) {
-      GAME_TICK = 400;
-    } else {
-      GAME_TICK = 350;
-    }
+    // difficulty scaling
+    if (score > 400) GAME_TICK = 400;
+    else if (score > 200) GAME_TICK = 500;
+    else if (score > 100) GAME_TICK = 600;
+    else GAME_TICK = 700;
     for (int i = 1; i < FIELD_WIDTH; i++) {
       for (int k = 0; k < 2; k++) {  // fixed header
         char curr = field[k][i];
@@ -410,7 +408,7 @@ void playGame() {
     ++score;
   }
   // hasDied
-    delay(1000); // show explosion
+  delay(1000);  // show explosion
   enterDiedScreen(score);
   clearField();
 }
