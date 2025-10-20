@@ -1,6 +1,6 @@
 # The Galaxy Boy (galaxy-run-handheld)
 ### By Zach Mahan, Puqi Luo, & Ivan Outkine, created for the 5-week Brown ENGN0030 Design Module
-[Final Protype](docs/images/final_prototype.png)
+![Final Protype](docs/images/final_prototype.png)
 
 ### Technical-Perspective Overview
    The Galaxy Boy employs an ESP32 microcontroller with an LCD1602 to run an interactive embedded videogam, *Galaxy Run*. It uses realtime polling of GPIO pins for input handling and custom bit-map sprites targetting the esp32 dev module on Arduino IDE. The body of the device is 3D printed using a model designed in Solidworks.
